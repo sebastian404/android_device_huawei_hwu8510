@@ -7,13 +7,13 @@
 #2011-05-28 sebastian404    increated ramdisk for kernel replacment stuffs
 #2011-08-09 sebastian404    since everyone lubs it so, added in ueventd
 #2011-11-12 sebastian404    Initial Build for Huawei U8510
+#2011-12-14 sebastian404    custom kernel
 ##########################################
 
 on early-init
     start ueventd
 
 on init
-
     # setup enviroment
     export PATH /sbin
     export ANDROID_ROOT /system
@@ -29,17 +29,20 @@ on init
     mkdir /etc 0770 root root
     mkdir /tmp 01777 root root
 
-    # mount inital filesystems
-    mount tmpfs tmpfs /tmp size=64m
-    devwait /dev/block/mmcblk0p1
-    mount vfat /dev/block/mmcblk0p1 /sdcard rw
-
-
 on boot
     ifup lo
     hostname localhost
     domainname localdomain
     class_start default
+
+    # mount inital filesystems
+    mount tmpfs tmpfs /tmp size=64m
+    wait /dev/block/mmcblk1p1
+    mount vfat /dev/block/mmcblk1p1 /sdcard rw
+
+    # turn up backlight & keypad
+    write /sys/class/leds/lcd-backlight/brightness 255
+    write /sys/class/leds/button-backlight/brightness 255
 
 service usbconfig /sbin/usbconfig
     oneshot
