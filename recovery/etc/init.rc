@@ -37,8 +37,8 @@ on boot
 
     # mount inital filesystems
     mount tmpfs tmpfs /tmp size=64m
-    wait /dev/block/mmcblk1p1
-    mount vfat /dev/block/mmcblk1p1 /sdcard rw
+    wait /dev/block/mmcblk0p1
+    mount vfat /dev/block/mmcblk0p1 /sdcard rw
 
     # turn up backlight & keypad
     write /sys/class/leds/lcd-backlight/brightness 255
