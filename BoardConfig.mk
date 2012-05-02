@@ -1,12 +1,12 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/huawei/u8510/BoardConfigVendor.mk
+-include vendor/huawei/hwu8510/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := unknown
 TARGET_CPU_ABI := armeabi
-TARGET_BOOTLOADER_BOARD_NAME := u8510
+TARGET_BOOTLOADER_BOARD_NAME := hwu8510
 
 BOARD_KERNEL_CMDLINE := console=ttyDCC0 androidboot.hardware=huawei
 BOARD_KERNEL_BASE := 0x10208000
@@ -19,7 +19,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0A0A0000
 
 BOARD_FLASH_BLOCK_SIZE := 0x00020000
 
-TARGET_PREBUILT_KERNEL := device/huawei/u8510/recovery_kernel
+TARGET_PREBUILT_KERNEL := device/huawei/hwu8510/recovery_kernel
+TARGET_RECOVERY_INITRC := device/huawei/hwu8510/recovery/etc/init.rc
 
 BOARD_SYSTEM_DEVICE := /dev/block/mtdblock4
 BOARD_SYSTEM_FILESYSTEM := auto
@@ -34,7 +35,7 @@ BOARD_DATADATA_DEVICE := /dev/block/mtdblock7
 BOARD_DATADATA_FILESYSTEM := auto
 BOARD_DATADATA_FILESYSTEM_OPTIONS := rw
 
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u8510/recovery/recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/hwu8510/recovery/recovery_ui.c
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_DATADATA := true
