@@ -1,11 +1,18 @@
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
 -include vendor/huawei/hwu8510/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := unknown
+
+TARGET_BOARD_PLATFORM := msm7k
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+
 TARGET_CPU_ABI := armeabi
+TARGET_CPU_ABI := armeabi-v6l
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv6-vfp
+
 TARGET_BOOTLOADER_BOARD_NAME := hwu8510
 
 BOARD_KERNEL_CMDLINE := console=ttyDCC0 androidboot.hardware=huawei
@@ -20,7 +27,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0A0A0000
 BOARD_FLASH_BLOCK_SIZE := 0x00020000
 
 TARGET_PREBUILT_KERNEL := device/huawei/hwu8510/recovery_kernel
-TARGET_RECOVERY_INITRC := device/huawei/hwu8510/recovery/etc/init.rc
+TARGET_RECOVERY_INITRC := device/huawei/hwu8510/recovery/init.rc
 
 BOARD_SYSTEM_DEVICE := /dev/block/mtdblock4
 BOARD_SYSTEM_FILESYSTEM := auto
@@ -44,4 +51,14 @@ BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun
 
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+
+#twrp
+DEVICE_RESOLUTION := 320x480
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+SP1_NAME := "cust"
+SP1_BACKUP_METHOD := files
+SP1_MOUNTABLE := 1
+SP2_NAME := "datadata"
+SP2_BACKUP_METHOD := files
+SP2_MOUNTABLE := 1
 
